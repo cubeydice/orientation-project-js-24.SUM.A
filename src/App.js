@@ -1,11 +1,10 @@
 import "./App.css";
 import React, { useState } from "react";
+import ExperienceForm from './ExperienceForm'
 import EducationForm from "./components/education/EducationForm";
 import EducationView from "./components/education/EducationView";
 import UserInfo from "./UserInfo";
 import AddSkillForm from './AddSkillForm';
-import ExperienceForm from './ExperienceForm';
-import EducationForm from "./components/education/EducationForm";
 
 function App() {
   const [showAddSkillForm, setShowAddSkillForm] = useState(false);
@@ -24,8 +23,12 @@ function App() {
   };
 
   const toggleExperienceForm = () => {
-    setShowExperienceForm(!showExperienceForm);
-  };
+    setShowExperienceForm(!showEducationForm);
+  }
+
+  const toggleEducationForm = () => {
+    setShowEducationForm(!showEducationForm);
+  }
 
   return (
     <div className="App">

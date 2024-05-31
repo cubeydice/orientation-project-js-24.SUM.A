@@ -6,6 +6,13 @@
   margin: 0em 1em 2em 2em;
 }
 
+.education-item-school-container {
+  display: flex;
+  text-align: left;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .education-item-school {
   display: flex;
   text-align: left;
