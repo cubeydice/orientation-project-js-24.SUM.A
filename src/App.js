@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import './App.css';
+import "./App.css";
+import React, { useState } from "react";
+import EducationForm from "./components/education/EducationForm";
+import EducationView from "./components/education/EducationView";
+import UserInfo from "./UserInfo";
 import AddSkillForm from './AddSkillForm';
-import UserInfo from './UserInfo';
 import ExperienceForm from './ExperienceForm';
 import EducationForm from "./components/education/EducationForm";
 
@@ -44,7 +46,7 @@ function App() {
       {/* Education Section */}
       <div className="resumeSection">
         <h2>Education</h2>
-        <p>Education Placeholder</p>
+        <EducationView />
         <button onClick={toggleEducationForm}>{showEducationForm ? "Hide" : "Add Education"}</button>
         {showEducationForm && <EducationForm />}
         <br />

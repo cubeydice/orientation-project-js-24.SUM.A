@@ -13,17 +13,10 @@ const EducationForm = () => {
     const handleChange = (field) => (e) => {
         e.preventDefault();
 
-        if (field === 'grade') {
-            setFormData({
-                ...formData,
-                [field]: `${e.currentTarget.value}%`
-            })
-        } else {
-            setFormData({
-                ...formData,
-                [field]: e.currentTarget.value
-            })
-        }
+        setFormData({
+            ...formData,
+            [field]: e.currentTarget.value
+        })
     }
 
     const handleSubmit = (e) => {
@@ -38,9 +31,11 @@ const EducationForm = () => {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             alert("Education successfully added!")
         })
         .catch((error) => {
+            console.log(error);
             alert("Error: Education not added :(")
         })
     }
@@ -94,7 +89,8 @@ const EducationForm = () => {
                         value={formData.grade}
                         placeholder="Grade"
                         onChange={handleChange('grade')}
-                        /> %
+                        />%
+
                     </label>
                     <label>
                         <h2>Logo URL</h2>
@@ -115,3 +111,4 @@ const EducationForm = () => {
 };
 
 export default EducationForm;
+
