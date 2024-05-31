@@ -1,15 +1,30 @@
-import React from "react";
-import "./App.css";
-import React, {useState} from "react";
+import React, { useState } from 'react';
+import './App.css';
+import AddSkillForm from './AddSkillForm';
+import UserInfo from './UserInfo';
+import ExperienceForm from './ExperienceForm';
 import EducationForm from "./components/education/EducationForm";
-import UserInfo from "./UserInfo";
 
 function App() {
+  const [showAddSkillForm, setShowAddSkillForm] = useState(false);
+  const [showExperienceForm, setShowExperienceForm] = useState(false);
   const [showEducationForm, setShowEducationForm] = useState(false);
 
   const toggleEducationForm = () => {
     setShowEducationForm(!showEducationForm);
   }
+  const handleAddSkillClick = () => {
+    setShowAddSkillForm(!showAddSkillForm);
+  };
+
+  const handleFormSubmit = () => {
+    setShowAddSkillForm(false);
+  };
+
+  const toggleExperienceForm = () => {
+    setShowExperienceForm(!showExperienceForm);
+  };
+
   return (
     <div className="App">
       <h1>Resume Builder</h1>
@@ -20,9 +35,10 @@ function App() {
       {/* Experience Section */}
       <div className="resumeSection">
         <h2>Experience</h2>
-        <p>Experience Placeholder</p>
-        <button>Add Experience</button>
-        <br></br>
+        <button onClick={toggleExperienceForm}>
+          {showExperienceForm ? "Hide Experience Form" : "Add Experience"}
+        </button>
+        {showExperienceForm && <ExperienceForm />}
       </div>
 
       {/* Education Section */}
@@ -31,18 +47,19 @@ function App() {
         <p>Education Placeholder</p>
         <button onClick={toggleEducationForm}>{showEducationForm ? "Hide" : "Add Education"}</button>
         {showEducationForm && <EducationForm />}
-        <br></br>
+        <br />
       </div>
 
       {/* Skills Section */}
       <div className="resumeSection">
         <h2>Skills</h2>
         <p>Skill Placeholder</p>
-        <button>Add Skill</button>
-        <br></br>
+        <button onClick={handleAddSkillClick}>Add Skill</button>
+        <br />
+        {showAddSkillForm && <AddSkillForm onSubmit={handleFormSubmit} />}
       </div>
 
-      <br></br>
+      <br />
       <button>Export</button>
     </div>
   );
